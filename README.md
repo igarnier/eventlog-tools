@@ -1,3 +1,17 @@
+# eventlog-stats usage
+
+Howto:
+
+- Install `gnuplot` >= 5
+- Add `-runtime-variant=i` to the flags of the binary you want to instrument
+- Generate eventlog data by running your instrumented program as follows: `OCAML_EVENTLOG_ENABLED=i ./your-program`
+  This generates a file `caml-PID.eventlog`a
+- `dune exec ./bin/eventlog_stats.exe caml-PID.eventlog` will produce `.png` plots
+
+Warning: this is a hack designed to generate plots for various GC stats; the program expects traces to
+be nontrivial (it might crash otherwise)
+
+
 # eventlog-tools
 
 `eventlog-tools` is a library and set of tools to parse and interact with
@@ -26,11 +40,11 @@ Here is a sample program:
 ```ocaml
 module SMap = Map.Make(String)
 
-let s i = String.make 512 (Char.chr (i mod 256))  
+let s i = String.make 512 (Char.chr (i mod 256))
 
 let clear map = SMap.fold (fun k _ m -> SMap.remove k m) map map
 
-let rec seq i = if i = 0 then Seq.empty else fun () -> (Seq.Cons (i, seq (i - 1))) 
+let rec seq i = if i = 0 then Seq.empty else fun () -> (Seq.Cons (i, seq (i - 1)))
 
 let () =
   seq 1_000_000
@@ -79,7 +93,7 @@ You can then head to the address `chrome://tracing` in Google Chrome and load th
 This tool provides an overview as well as printing simple histograms for the events traced by the instrumented runtime.
 
 ```
-●●● ocaml-eventlog-report caml-eventlog-1663159 
+●●● ocaml-eventlog-report caml-eventlog-1663159
 ==== allocs
 
 alloc large: 999711
