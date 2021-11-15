@@ -1,0 +1,7 @@
+{0 prbnmcn-series}
+
+[prbnmcn-series] provides basic functions to manipulate time series.
+
+{1:api API}
+
+{!modules: Series}

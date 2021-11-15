@@ -1,0 +1,9 @@
+(library (name series) (public_name prbnmcn-series)
+  (libraries prbnmcn-basic-structures prbnmcn-linalg)
+  (ocamlopt_flags -O3 (-warn-error -39))
+  (flags (:standard -open Basic_structures)))
+
+(documentation
+   (package prbnmcn-series)
+   (mld_files index)
+)

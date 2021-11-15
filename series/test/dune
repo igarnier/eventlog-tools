@@ -1,0 +1,7 @@
+(library
+  (name grid_test)
+  (libraries prbnmcn-series qcheck)
+  (inline_tests)
+  (preprocess
+    (pps ppx_expect))
+)

@@ -1,0 +1,18 @@
+(lang dune 2.8)
+(name prbnmcn-series)
+(version 0.0.2)
+(generate_opam_files true)
+(source (uri git+https://github.com/igarnier/prbnmcn-series))
+(license MIT)
+(authors "Ilias Garnier")
+(maintainers igarnier@protonmail.com)
+(package
+  (name prbnmcn-series)
+  (synopsis "Basic time series manipulation")
+  (depends
+    (ocaml (>= 4.12.0))
+    (qcheck (and (>= 0.17) :with-test))
+    (prbnmcn-basic-structures (= 0.0.1))
+    (prbnmcn-linalg (= 0.0.1))))
+(bug_reports http://github.com/igarnier/prbnmcn-series)
+(homepage http://github.com/igarnier/prbnmcn-series)
