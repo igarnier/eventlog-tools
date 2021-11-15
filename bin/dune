@@ -5,6 +5,12 @@
  (libraries cmdliner bos fpath rresult owl-base eventlog))
 
 (executable
+ (name eventlog_stats)
+ (modules eventlog_stats)
+ (public_name ocaml-eventlog-stats)
+ (libraries cmdliner bos fpath rresult prbnmcn-stats prbnmcn-series prbnmcn-gnuplot eventlog))
+
+(executable
  (name eventlog_to_chrome)
  (modules eventlog_to_chrome)
  (public_name ocaml-eventlog-to-chrome)

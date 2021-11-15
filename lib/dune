@@ -1,4 +1,4 @@
 (library
  (name eventlog)
  (public_name eventlog-tools.parser)
- (libraries angstrom bigarray bigstringaf rresult))
+ (libraries angstrom bigarray bigstringaf prbnmcn-stats prbnmcn-series prbnmcn-gnuplot rresult))

@@ -1,5 +1,5 @@
 module R = Rresult.R
-           
+
 type phase = int
 type bucket = int
 type counter_kind = int
@@ -32,6 +32,17 @@ let string_of_phase i = Consts.phase.(i)
 let string_of_gc_counter i = Consts.gc_counter.(i)
 let string_of_alloc_bucket i = Consts.alloc_bucket.(i)
 
+let phase_of_string s =
+  let exception Found of int in
+  try
+    for i = 0 to Array.length Consts.phase - 1 do
+      if Consts.phase.(i) = s then
+        raise (Found i)
+    done ;
+    assert false
+  with
+  | Found i -> i
+
 let phase_of_int i =
   if i < Array.length Consts.phase then
     R.return i
@@ -49,3 +60,14 @@ let alloc_bucket_of_int i =
     R.return (i - 1)
   else
     R.error_msgf "alloc_bucket_of_int: invalid argument %d" i
+
+let counter_kind_of_string s =
+  let exception Found of int in
+  try
+    for i = 0 to Array.length Consts.phase - 1 do
+      if Consts.gc_counter.(i) = s then
+        raise (Found i)
+    done ;
+    assert false
+  with
+  | Found i -> i
